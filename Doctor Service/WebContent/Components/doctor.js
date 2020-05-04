@@ -1,7 +1,6 @@
-//Hide alerts-Register
 $(document).ready(function()
 {
-//hide area of error messages
+//Hide area of error messages
 	$("#alertErrorNic").hide();
 	$("#alertErrorFirstName").hide();
 	$("#alertErrorLastName").hide();
@@ -11,19 +10,28 @@ $(document).ready(function()
 	$("#alertErrorEmail").hide();
 	$("#alertErrorPassword").hide();
 	
-//check the number of characters in NIC
+//Check the number of characters in NIC
 	$("#nic").focusout(function(){
 		checkNic();
 	});
 
-//check email is valid or not
+//Check email is valid or not
 	$("#email").focusout(function(){
 		checkEmail();
 	});
 
-//check contact number validation 
+//Check contact number validation 
 	$("#contactNumber").focusout(function(){
 		checkContactNumber();
+	});	
+	
+//Check name validation
+	$("#firstName").focusout(function(){
+		checkfirstName();
+	});	
+	
+	$("#lastName").focusout(function(){
+		checkLastName();
 	});	
 	
 //NIC validation
@@ -66,7 +74,24 @@ function checkContactNumber(){
   	}
 }
 
+//Name validation
+function checkFirstName(){
+	let firstName = $("#firstName").val().trim();
+	
+	if (firstName == ""){
+		$("#alertErrorFirstName").text("First name cannot be empty");
+		$("#alertErrorFirstName").hide();
+	 } 
+}
 
+function checkLastName(){
+	let lastName = $("#lastName").val().trim();
+	
+	if (firstName == ""){
+		$("#alertErrorFirstName").text("Last name cannot be empty");
+		$("#alertErrorFirstName").hide();
+	 } 
+}
 });
 
 
