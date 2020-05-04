@@ -21,9 +21,14 @@ $(document).ready(function()
 		checkEmail();
 	});
 
+//check contact number validation 
+	$("#contactNumber").focusout(function(){
+		checkContactNumber();
+	});	
+	
 //NIC validation
 function checkNic(){
-	let nicLength = $("#nic").val().length();
+	let nicLength = $("#nic").val().length;
 	
 	if (nicLength == 10 || nicLength == 12){
 		$("#alertErrorNic").hide();
@@ -33,6 +38,7 @@ function checkNic(){
 		$("#alertErrorNic").show();
 	}
 }
+
 //Email validation
 function checkEmail(){
 		let email = $("#email").val().trim();
@@ -42,10 +48,25 @@ function checkEmail(){
 	  		$("#alertErrorEmail").hide();
 	  	}
 	  	else{
-	  		$("#alertErrorEmail").text("Please enter a valid email");
+	  		$("#alertErrorEmail").text("Please enter a email");
 	  		$("#alertErrorEmail").show();
 	  	}
 }
+
+//Contact Number validation
+function checkContactNumber(){
+	let contactNumberLength = $("#contactNumber").val().length;
+  
+  	if(contactNumberLength == 10){
+  		$("#alertErrorContactNumber").hide();
+  	}
+  	else{
+  		$("#alertErrorContactNumber").text("Please enter a valid contact number");
+  		$("#alertErrorContactNumber").show();
+  	}
+}
+
+
 });
 
 
