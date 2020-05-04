@@ -5,65 +5,67 @@ $("#alertSuccess").hide();
 $("#alertError").hide();
 }); 
  
-//Hide alerts-NIC
- $(document).ready(function()
+//Hide alerts-Email
+$(document).ready(function()
 {
-$("#alertSuccessNic").hide();
-$("#alertErrorNic").hide();
+$("#alertErrorEmail").hide();
 }); 
- 
-//Hide alerts-First name
- $(document).ready(function()
-{
-$("#alertSuccessFirsttName").hide();
-$("#alertErrorNic").hide();
-}); 
- 
-//Hide alerts-Last name
- $(document).ready(function()
-{
-$("#alertSuccessLastName").hide();
-$("#alertErrorLastName").hide();
-}); 
- 
-//Hide alerts-Nic
- $(document).ready(function()
-{
-$("#alertSuccessNic").hide();
-$("#alertErrorNic").hide();
-}); 
- 
-//Hide alerts-Nic
- $(document).ready(function()
-{
-$("#alertSuccessNic").hide();
-$("#alertErrorNic").hide();
-}); 
- 
-//Hide alerts-Nic
- $(document).ready(function()
-{
-$("#alertSuccessNic").hide();
-$("#alertErrorNic").hide();
-}); 
- 
-//Adding event handler to Register button 
-$(document).on("click", "#btnRegister", function(event)
-{
-});
- 
-//Clear status messages 
- $("#alertSuccess").text("");
- $("#alertSuccess").hide();
- $("#alertError").text("");
- $("#alertError").hide();
 
-// Form validation
+//Form validation
 var status = validateForm();
-//If not valid
+// If not valid
 if (status != true)
 {
-$("#alertError").text(status);
-$("#alertError").show();
+ $("#alertError").text(status);
+ $("#alertError").show();
 return;
 }
+
+//Display success message
+$("#alertSuccess").text("Registered successfully.");
+$("#alertSuccess").show();
+
+$("#doctorRegister")[0].reset();
+
+//Validate form elements
+function validateForm(){
+	
+	//email
+		let email = $("#email").val().trim();
+	  	let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  
+	  	if(regex.test(email)){
+	  		$("#alertErrorEmail").hide();
+	  	}
+	  	else{
+	  		$("#alertErrorEmail").text("Please enter a valid email");
+	  		$("#alertErrorEmail").show();
+	  	}
+
+	  	
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

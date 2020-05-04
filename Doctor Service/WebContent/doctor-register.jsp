@@ -44,13 +44,12 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                 <span> Doctor Registration</span>
             </h3>
 
-            <form action="doctor-register.jsp">
+            <form id="doctorRegister" action="doctor-register.jsp">
               
                 <div class="form-group row">
                     <label for="nic" class="col-sm-2 col-form-label">NIC</label>
                     <div class="col-sm-10">
                         <input type="text" id = "nic" name="nic" class="form-control">      
-                         	<div id="alertSuccessNic" class="alert alert-success"> </div>
            					<div id="alertErrorNic" class="alert alert-danger"> </div>         				
                     </div>
                 </div>
@@ -59,7 +58,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
                     <div class="col-sm-10">
                         <input type="text" id="firstName" name="firstName" class="form-control">
-                            <div id="alertSuccessFirstName" class="alert alert-success"> </div>
            					<div id="alertErrorFirstName" class="alert alert-danger"> </div>
                     </div>
                 </div>
@@ -67,7 +65,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
                     <div class="col-sm-10">
                         <input type="text" id="lastName" name="lastName" class="form-control">
-                        	<div id="alertSuccessLastName" class="alert alert-success"> </div>
            					<div id="alertErrorLastName" class="alert alert-danger"> </div>
                     </div>
                 </div>
@@ -75,7 +72,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
                     <div class="col-sm-10">
                         <input type="text" id="contactNumber" name="contactNumber" class="form-control">
-                        	<div id="alertSuccessContactNumber" class="alert alert-success"> </div>
            					<div id="alertErrorContactNumber" class="alert alert-danger"> </div>
                     </div>
                 </div>
@@ -102,7 +98,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="category" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-10">
                         <input type="text" id="category" name="category"  class="form-control">
-                        	<div id="alertSuccessCategory" class="alert alert-success"> </div>
            					<div id="alertErrorCategory" class="alert alert-danger"> </div>
                     </div>
                 </div>
@@ -121,7 +116,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
                         <input type="email" id="email" name="email"  class="form-control">
-                        	<div id="alertSuccessEmail" class="alert alert-success"> </div>
            					<div id="alertErrorEmail" class="alert alert-danger"> </div>
                     </div>
                 </div>
@@ -129,7 +123,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" id="password" name="password" class="form-control">
-                        	<div id="alertSuccessPassword" class="alert alert-success"> </div>
            					<div id="alertErrorPassword" class="alert alert-danger"> </div>
                     </div>
                 </div>
