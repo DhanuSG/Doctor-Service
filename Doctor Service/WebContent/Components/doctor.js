@@ -5,6 +5,41 @@ $("#alertSuccess").hide();
 $("#alertError").hide();
 }); 
  
+//Hide alerts-NIC
+ $(document).ready(function()
+{
+$("#alertSuccessNic").hide();
+$("#alertErrorNic").hide();
+}); 
+ 
+//Hide alerts-First name
+ $(document).ready(function()
+{
+$("#alertSuccessFirsttName").hide();
+$("#alertErrorNic").hide();
+}); 
+ 
+//Hide alerts-Last name
+ $(document).ready(function()
+{
+$("#alertSuccessLastName").hide();
+$("#alertErrorLastName").hide();
+}); 
+ 
+//Hide alerts-Nic
+ $(document).ready(function()
+{
+$("#alertSuccessNic").hide();
+$("#alertErrorNic").hide();
+}); 
+ 
+//Hide alerts-Nic
+ $(document).ready(function()
+{
+$("#alertSuccessNic").hide();
+$("#alertErrorNic").hide();
+}); 
+ 
 //Hide alerts-Nic
  $(document).ready(function()
 {
