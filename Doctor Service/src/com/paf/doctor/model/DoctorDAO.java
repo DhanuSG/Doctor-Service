@@ -16,7 +16,7 @@ public class DoctorDAO {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/doctor", "root", "root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/doctorService", "root", "root");
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -162,7 +162,8 @@ public class DoctorDAO {
 					"</head>" + 
 					"<body>" +
 					"<table border=\"1\"><tr><th>NIC</th><th>First Name</th><th>Last Name</th><th>Contact Number</th>" +
-					"<th>Gender</th>" + "<th>Category</th>" + "<th>Hospital Name</th>" + "<th>Email</th>" + "<th>Password</th></tr>";
+					"<th>Gender</th>" + "<th>Category</th>" + "<th>Hospital Name</th>" + "<th>Email</th>" + "<th>Password</th>" +
+					"<th>Update</th><th>Remove</th></tr>";
 			
 			String query = "select nic, firstName, lastName, contactNumber, gender, category, hospitalName, email, password from doctor_registration";
 			Statement statement = con.createStatement();
@@ -188,7 +189,8 @@ public class DoctorDAO {
 				output += "<td>" + hospitalName + "</td>";
 				output += "<td>" + email + "</td>";
 				output += "<td>" + password + "</td>";
-				
+				output += "<td><button>Update</buuton></td>";
+				output += "<td><button>Remove</button></td>";
 				output += "</tr>";
 			}
 		}catch (Exception e) {

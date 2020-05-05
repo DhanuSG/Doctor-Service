@@ -120,12 +120,10 @@ function checkContactNumber(){
   
   	if(contactNumberLength == 10){
   		$("#contact_error").hide();
-  		return true;
   	}
   	else{
   		$("#contact_error").text("Please enter a valid contact number");
   		$("#contact_error").show();
-  		return false;
   	}
 }
 
@@ -136,12 +134,18 @@ function checkFirstName(){
 		$("#fName_error").text("First name cannot be empty");
 		$("#fName_error").show();
 	 } 
+	else{
+		$("#fName_error").hide();
+	}		
 }
 
 function checkLastName(){
 	if($("#lastName").val().trim() == ""){
 		$("#lName_error").text("Last name cannot be empty");
 		$("#lName_error").show();
+	}
+	else {
+		$("#lName_error").hide();
 	}
 }
 
@@ -151,6 +155,9 @@ function checkCategory(){
 		$("#category_error").text("Category cannot be empty");
 		$("#category_error").show();
 	 } 
+	else{
+		$("#category_error").hide();
+	}
 }
 
 //Password validation
@@ -202,6 +209,29 @@ function fNameRequired(){
 		return true;
 	}
 }
+
+function lNameRequired(){
+	if ($("#lName").vla().trim() == ""){
+		$("#lName_error").text("This field is required");
+		$("#lName_error").show();
+		return false;
+	}else{
+		$("#lName_error").hide();
+		return true;
+	}
+}
+
+function fNameRequired(){
+	if ($("#category").vla().trim() == ""){
+		$("#category_error").text("This field is required");
+		$("#category_error").show();
+		return false;
+	}else{
+		$("#category_error").hide();
+		return true;
+	}
+}
+
 
 
 
