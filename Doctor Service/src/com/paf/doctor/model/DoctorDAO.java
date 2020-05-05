@@ -16,7 +16,7 @@ public class DoctorDAO {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthcare_doctor", "root", "root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/doctor", "root", "root");
 		
 		} catch(Exception e) {
 			e.printStackTrace();

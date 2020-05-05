@@ -2,8 +2,6 @@ package com.paf.doctor.bean;
 
 public class Doctor {
 
-
-	private int doctorID;
 	private String nic;
 	private String firstName;
 	private String lastName;
@@ -36,12 +34,7 @@ public Doctor() {
 		this.email = email;
 		this.password = password;
 	}
-	public int getDoctorID() {
-		return doctorID;
-	}
-	public void setDoctorID(int doctorID) {
-		this.doctorID = doctorID;
-	}
+
 	public String getNic() {
 		return nic;
 	}

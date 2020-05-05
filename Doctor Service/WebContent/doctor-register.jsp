@@ -162,8 +162,13 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                 
             </form>
             
-            <div id="alertSuccess"class="alert alert-success"></div>
-            <div id="alertError" class="alert alert-danger"></div>
+            <div class="alert alert-success">
+            	<%
+            		if(session.getAttribute("doctor_registration_status") != null) {
+            			out.print(session.getAttribute("doctor_registration_status"));
+            		}
+            	%>
+            	</div>
             
         </fieldset>
     </div>
