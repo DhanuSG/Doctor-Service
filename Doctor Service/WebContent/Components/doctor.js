@@ -1,14 +1,15 @@
 $(document).ready(function()
 {
 //Hide area of error messages
-	$("#alertErrorNic").hide();
-	$("#alertErrorFirstName").hide();
-	$("#alertErrorLastName").hide();
-	$("#alertErrorContactNumber").hide();
-	$("#alertErrorGender").hide();
-	$("#alertErrorCategory").hide();
-	$("#alertErrorEmail").hide();
-	$("#alertErrorPassword").hide();
+	$("#nic_error").hide();
+	$("#fName_error").hide();
+	$("#lName_error").hide();
+	$("#contact_error").hide();
+	$("#gender_error").hide();
+	$("#category_error").hide();
+	$("#email_error").hide();
+	$("#password_error").hide();
+	$("#confirmPassword_error").hide();
 	
 //Check the number of characters in NIC
 	$("#nic").focusout(function(){
@@ -27,11 +28,26 @@ $(document).ready(function()
 	
 //Check name validation
 	$("#firstName").focusout(function(){
-		checkfirstName();
+		checkFirstName();
 	});	
 	
 	$("#lastName").focusout(function(){
 		checkLastName();
+	});	
+
+//Check category validation
+	$("#category").focusout(function(){
+		checkCategory();
+	});	
+	
+//check password validation
+	$("#password").focusout(function(){
+		checkPassword();
+	});	
+	
+//check confirmed password validation
+	$("#confirmPassword").focusout(function(){
+		checkConfirmPassword();
 	});	
 	
 //NIC validation
@@ -39,11 +55,11 @@ function checkNic(){
 	let nicLength = $("#nic").val().length;
 	
 	if (nicLength == 10 || nicLength == 12){
-		$("#alertErrorNic").hide();
+		$("#nic_error").hide();
 	}
 	else{
-		$("#alertErrorNic").text("NIC should be 10 or 12 characters.");
-		$("#alertErrorNic").show();
+		$("#nic_error").text("NIC should be 10 or 12 characters.");
+		$("#nic_error").show();
 	}
 }
 
@@ -53,11 +69,11 @@ function checkEmail(){
 	  	let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	  
 	  	if(regex.test(email)){
-	  		$("#alertErrorEmail").hide();
+	  		$("#email_error").hide();
 	  	}
 	  	else{
-	  		$("#alertErrorEmail").text("Please enter a email");
-	  		$("#alertErrorEmail").show();
+	  		$("#email_error").text("Please enter a email");
+	  		$("#email_error").show();
 	  	}
 }
 
@@ -66,32 +82,61 @@ function checkContactNumber(){
 	let contactNumberLength = $("#contactNumber").val().length;
   
   	if(contactNumberLength == 10){
-  		$("#alertErrorContactNumber").hide();
+  		$("#contact_error").hide();
   	}
   	else{
-  		$("#alertErrorContactNumber").text("Please enter a valid contact number");
-  		$("#alertErrorContactNumber").show();
+  		$("#contact_error").text("Please enter a valid contact number");
+  		$("#contact_error").show();
   	}
 }
 
 //Name validation
 function checkFirstName(){
-	let firstName = $("#firstName").val().trim();
 	
-	if (firstName == ""){
-		$("#alertErrorFirstName").text("First name cannot be empty");
-		$("#alertErrorFirstName").hide();
+	if ($("#firstName").val().trim() == ""){
+		$("#fName_error").text("First name cannot be empty");
+		$("#fName_error").show();
 	 } 
 }
 
 function checkLastName(){
-	let lastName = $("#lastName").val().trim();
-	
-	if (firstName == ""){
-		$("#alertErrorFirstName").text("Last name cannot be empty");
-		$("#alertErrorFirstName").hide();
+	if($("#lastName").val().trim() == ""){
+		$("#lName_error").text("Last name cannot be empty");
+		$("#lName_error").show();
+	}
+}
+
+//Category validation
+function checkCategory(){
+	if ($("#category").val().trim() == ""){
+		$("#category_error").text("Category cannot be empty");
+		$("#category_error").show();
 	 } 
 }
+
+//Password validation
+function checkPassword(){
+	let passwordLength = $("#password").val().length;
+	  
+  	if(passwordLength >= 6){
+  		$("#password_error").hide();
+  	}
+  	else{
+  		$("#password_error").text("Password should be contain atleast 6 characters ");
+  		$("#password_error").show();
+  	}	
+}
+
+function checkConfirmPassword(){
+	if ($("#password").val() != $("#confirmPassword").val()){
+		$("#confirmPassword_error").text("Password do not match");
+  		$("#confirmPassword_error").show();
+	}
+	else{
+		$("#confirmPassword_error").hide();
+	}
+}
+
 });
 
 

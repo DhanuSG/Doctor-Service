@@ -46,63 +46,76 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 
             <form id="doctorRegister" action="doctor-register.jsp">
               
+                <!-- NIC -->
                 <div class="form-group row">
-                    <label for="nic" class="col-sm-2 col-form-label">NIC</label>
+                    <label for="nic" class="col-sm-2 col-form-label">NIC <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                        <input type="text" id = "nic" name="nic" class="form-control">      
-           				<div id="alertErrorNic" class="alert alert-danger"></div>         				
+                        <input type="text" name="nic" id="nic" class="form-control">
+                        <span class="error_message" id="nic_error"></span>
                     </div>
                 </div>
        
+				<!-- first name -->
                 <div class="form-group row">
-                    <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+                    <label for="firstName" class="col-sm-2 col-form-label">First Name <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                        <input type="text" id="firstName" name="firstName" class="form-control">
-           					<div id="alertErrorFirstName" class="alert alert-danger"> </div>
+                        <input type="text" name="firstName" class="form-control" id="firstName">
+                        <span class="error_message" id="fName_error"></span>
                     </div>
                 </div>
+                
+                <!-- last name -->
                 <div class="form-group row">
-                    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+                    <label for="last_name" class="col-sm-2 col-form-label">Last Name <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                        <input type="text" id="lastName" name="lastName" class="form-control">
-           					<div id="alertErrorLastName" class="alert alert-danger"> </div>
+                        <input type="text" name="lastName" class="form-control" id="lastName">
+                        <span class="error_message" id="lName_error"></span>
                     </div>
                 </div>
+                
+                <!-- contact number -->
                 <div class="form-group row">
-                    <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
+                    <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
                         <input type="text" id="contactNumber" name="contactNumber" class="form-control">
-           					<div id="alertErrorContactNumber" class="alert alert-danger"> </div>
+           					<span class="error_message" id="contact_error"> </span>
                     </div>
                 </div>
+                
+                <!-- gender -->
                 <fieldset class="form-group">
                     <div class="row">
-                      <lable for="gender" class="col-sm-2 col-form-label"> Gender </lable>
+                      <legend class="col-form-label col-sm-2 pt-0">Gender <span class="required-sign">(*)</span></legend>
                       <div class="col-sm-10">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" id="male" name="gender" value="male" checked>
+                          <input class="form-check-input" id="dob" type="radio" name="gender" value="male" checked>
                           <label class="form-check-label" for="male">
                             Male
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" id="female" name="gender" value="female">
+                          <input class="form-check-input" id="dob" type="radio" name="gender" value="female">
                           <label class="form-check-label" for="female">
                             Female
                           </label>
                         </div>
+                        <span class="error_message" id="gender_error"></span>
                       </div>
                     </div>
                 </fieldset>
+                
+                <!-- category -->
                 <div class="form-group row">
-                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <label for="category" class="col-sm-2 col-form-label">Category <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
                         <input type="text" id="category" name="category"  class="form-control">
-           					<div id="alertErrorCategory" class="alert alert-danger"> </div>
+           				<span class="error_message" id="category_error"> </span>
                     </div>
                 </div>
+                
+                <!-- hospital -->
                 <div class="form-group row">
-                    <label for="hospitalName" class="col-sm-2 col-form-label">Hospital Name</label>
+                    <label for="hospitalName" class="col-sm-2 col-form-label">Hospital Name <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
                         <select id="hospitalName" name ="hospitalName">
   							<option value="Asiri Hospital">Asiri Hospital</option>
@@ -112,26 +125,42 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 						</select>
                    </div>
                 </div>
+                
+                <!-- email -->
                 <div class="form-group row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <label for="email" class="col-sm-2 col-form-label">Email <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                        <input type="email" id="email" name="email"  class="form-control">
-           					<div id="alertErrorEmail" class="alert alert-danger"> </div>
+                        <input type="email" name="email" id="email" class="form-control">
+                        <span class="error_message" id="email_error"></span>
                     </div>
                 </div>
+                
+                <!-- password -->
                 <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <label for="password" class="col-sm-2 col-form-label">Password <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                        <input type="password" id="password" name="password" class="form-control">
-           					<div id="alertErrorPassword" class="alert alert-danger"> </div>
+                        <input type="password" name="password" class="form-control" id="password">
+                        <span class="error_message" id="password_error"></span>
                     </div>
                 </div>
+                
+                <!--retype password -->
                 <div class="form-group row">
+                    <label for="retype_password" class="col-sm-2 col-form-label">Confirm Password <span class="required-sign">(*)</span></label>
                     <div class="col-sm-10">
-                      <button type="submit" id="btnRegister" class="btn btn-success">Register</button>
+                        <input type="password" name="retype_password" class="form-control" id="confirmPassword">
+                        <span class="error_message" id="confirmPassword_error"></span>
                     </div>
                 </div>
-            </form>  
+                
+                <!-- sign in button -->
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-success" id="signin-button">Register</button>
+                    </div>
+                </div>
+                
+            </form>
             
             <div id="alertSuccess"class="alert alert-success"></div>
             <div id="alertError" class="alert alert-danger"></div>
