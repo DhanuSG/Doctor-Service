@@ -156,7 +156,7 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                 <!-- sign in button -->
                 <div class="form-group row">
                     <div class="col-sm-10">
-                      <button type="submit" class="btn btn-success" id="signin-button">Register</button>
+                      <button type="submit" class="btn btn-success" id="register-button">Register</button>
                     </div>
                 </div>
                 
@@ -176,8 +176,12 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 
     <div class ="row">
     <div class="col-12" id="displayDoctors">
-    	<h3>Doctor Details</h3>
-    	<%=DoctorDAO.doctorList()%>
+    	<fieldset>
+            <h3>
+                <span> Doctor Details</span>
+            </h3>
+            </fieldset>
+    		<%=DoctorDAO.doctorList()%>
     </div>   
     </div>
   </div>    

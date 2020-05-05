@@ -16,10 +16,3 @@ fieldset h3 {
 	font-size: 12px;
 }
 
-.custom-select select {
-  display: none; /*hide original SELECT element: */
-}
-
-.custom-select {
-  position: relative;
-}
