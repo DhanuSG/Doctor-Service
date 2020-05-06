@@ -227,13 +227,13 @@ $(document).ready(function()
 		// email is required
 		if ($("#email").val().trim() == "")
 		{
-			return "Insert Item Price.";
+			return "Insert email";
 		}
 		
 		// password is required
 		if ($("#password").val().trim() == "")
 		{
-			return "Insert email";
+			return "Insert password";
 		}
 		
 		return true;
