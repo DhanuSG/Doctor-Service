@@ -149,24 +149,25 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
             </fieldset>
             </div>
             <hr>
-            
-
-		<div class="row">
-		
-			<!-- Table -->
-			<div class="col-12" id="#divItemsGrid">
-				<h3>Doctor Details</h3>
-				<%=DoctorDAO.doctorList() %>
-			</div>
-			
+           		
 			<!-- Status -->
-			<div class="col-sm-4">
+			<div class="col-12">
 				<div id="alertSuccess" class="alert alert-success alertArea"></div>
 				<div id="alertError" class="alert alert-danger alertArea"></div>
 			</div>
-			
 		</div>
 	
-
+			
+			<!-- Table -->
+			<div class="col-12" id="#divItemsGrid">
+				<fieldset>
+					<h3>
+						<span>Doctor Details</span>
+					</h3>
+				</fieldset>
+						<%=DoctorDAO.doctorList()%>
+			</div>					
+		</div>
+	
 </body>
 </html>

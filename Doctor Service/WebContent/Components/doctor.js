@@ -90,7 +90,7 @@ $(document).ready(function()
 			data : $("#doctorRegister").serialize(),
 			dataType : "text",
 			complete : function(response, status) {
-				onItemSaveComplete(response.responseText, status);
+				registerComplete(response.responseText, status);
 			}
 		});
 	});
@@ -112,7 +112,7 @@ $(document).ready(function()
 				$("#password").val($(this).closest("tr").find('td:eq(8)').text());
 			});
 	
-	function onItemSaveComplete(response, status)
+	function registerComplete(response, status)
 	{
 		if (status == "success")
 		{
@@ -154,13 +154,13 @@ $(document).ready(function()
 					dataType : "text",
 					complete : function(response, status)
 					{
-						onItemDeleteComplete(response.responseText, status);
+						deleteComplete(response.responseText, status);
 					}
 				});
 			});
 
 	// Delete
-	function onItemDeleteComplete(response, status)
+	function deleteComplete (response, status)
 	{
 		if (status == "success")
 		{
@@ -342,40 +342,3 @@ function checkConfirmPassword(){
 		return false;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
