@@ -233,7 +233,7 @@ $(document).ready(function()
 		// password is required
 		if ($("#password").val().trim() == "")
 		{
-			return "Insert Item Description.";
+			return "Insert email";
 		}
 		
 		return true;
