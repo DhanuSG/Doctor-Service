@@ -101,7 +101,7 @@ public class DoctorAPI extends HttpServlet {
 	
 				Doctor doctor = new Doctor(nic);
 	
-				String output = DoctorDAO.deleteDoctor(doctor);
+		String output = DoctorDAO.deleteDoctor(doctor);
 	
 		response.getWriter().write(output);			
 	}

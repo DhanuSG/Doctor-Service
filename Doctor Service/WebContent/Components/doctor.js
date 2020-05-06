@@ -1,5 +1,12 @@
 $(document).ready(function()
 {
+	if ($("#alertSuccess").text().trim() == "")
+	{
+		$("#alertSuccess").hide();
+	}
+	
+	$("#alertError").hide();
+	
 //Hide area of error messages
 	$("#nic_error").hide();
 	$("#fName_error").hide();
@@ -10,7 +17,7 @@ $(document).ready(function()
 	$("#email_error").hide();
 	$("#password_error").hide();
 	$("#confirmPassword_error").hide();
-	
+
 //variables for validation
 	let vNic = true;
 	let vEmail = true;
@@ -56,32 +63,181 @@ $(document).ready(function()
 	$("#confirmPassword").focusout(function(){
 		vConfirmPassword = checkConfirmPassword();
 	});	
-	
+});
+
 	$(document).on("click", "#btnRegister", function(event){
-		let nicStatus = nicRequired();
-		let fNameStatus = fNameRequired();
-		let lNameStatus = lNameRequired();
-		let contactNumberStatus = contactNumberRequired();
-		let genderStatus = genderRequired();
-		let categoryStatus = categoryRequired();
-		let emailStatus = emailRequired;
-		let passwordStatus = passwordRequired();
-		let confirmPasswordStatus = confirmPasswordRequired();
-	
-		$("#doctorRegister").submit(function(){
-			if(nicStatus == false || fNameStatus == false || lNameStatus == false || contatctNumberStatus == false
-				|| genderStatus == false || categoryStatus == false || emailStatus == false 
-				|| passwordStatus == false || confirmPasswordStatus == false){
-			return false;
-			} else if(vNic == false || vEmail == false || vPassword == false || vConfirmPassword == false ||
-				vContactNumber == false){
-				return false;
-			} else{
-				return true;
+		
+		$("#alertSuccess").text("");
+		$("#alertSuccess").hide();
+		$("#alertError").text("");
+		$("#alertError").hide();
+
+
+		var status = validateItemForm();
+
+		if (status != true) {
+			$("#alertError").text(status);
+			$("#alertError").show();
+			return;
+		}
+
+		// If valid------------------------
+		var method = ($("#hidField").val() == "save") ? "POST" : "PUT";
+
+		$.ajax({
+			url : "DoctorAPI",
+			type : method,
+			data : $("#doctorRegister").serialize(),
+			dataType : "text",
+			complete : function(response, status) {
+				onItemSaveComplete(response.responseText, status);
 			}
 		});
 	});
-});
+	
+	$(document).on(
+			"click",
+			".btnUpdate",
+			function(event) {
+				$("#hidField").val(
+						$(this).closest("tr").find('#hidFieldUpdate').val());
+				$("#nic").val($(this).closest("tr").find('td:eq(0)').text());
+				$("#firstName").val($(this).closest("tr").find('td:eq(1)').text());
+				$("#lastName").val($(this).closest("tr").find('td:eq(2)').text());
+				$("#contactNumber").val($(this).closest("tr").find('td:eq(3)').text());
+			//	$("#genderMale").val($(this).closest("tr").find('td:eq(3)').text());
+				$("#category").val($(this).closest("tr").find('td:eq(5)').text());
+			//	$("#hospitalName").val($(this).closest("tr").find('td:eq(6)').text());
+				$("#email").val($(this).closest("tr").find('td:eq(7)').text());
+				$("#password").val($(this).closest("tr").find('td:eq(8)').text());
+			});
+	
+	function onItemSaveComplete(response, status)
+	{
+		if (status == "success")
+		{
+			var resultSet = JSON.parse(response);
+			if (resultSet.status.trim() == "success")
+			{
+				$("#alertSuccess").text("Successfully saved.");
+				$("#alertSuccess").show();
+				$("#divItemsGrid").html(resultSet.data);
+			} 
+			else if (resultSet.status.trim() == "error")
+			{
+				$("#alertError").text(resultSet.data);
+				$("#alertError").show();
+			}
+		} 
+		else if (status == "error")
+		{
+			$("#alertError").text("Error while saving.");
+			$("#alertError").show();
+		} 
+		else
+		{
+			$("#alertError").text("Unknown error while saving..");
+			$("#alertError").show();
+		}
+		
+		$("#hidField").val("save");
+		$("#doctorRegister")[0].reset();
+	}
+	
+	$(document).on("click", ".btnRemove", function(event)
+			{
+				$.ajax(
+				{
+					url : "DoctorAPI",
+					type : "DELETE",
+					data : "nic=" + $(this).data("nic"),
+					dataType : "text",
+					complete : function(response, status)
+					{
+						onItemDeleteComplete(response.responseText, status);
+					}
+				});
+			});
+
+	// Delete
+	function onItemDeleteComplete(response, status)
+	{
+		if (status == "success")
+		{
+			var resultSet = JSON.parse(response);
+			
+			if (resultSet.status.trim() == "success")
+			{
+				$("#alertSuccess").text("Successfully deleted.");
+				$("#alertSuccess").show();
+				$("#divItemsGrid").html(resultSet.data);
+			} 
+			else if (resultSet.status.trim() == "error")
+			{
+				$("#alertError").text(resultSet.data);
+				$("#alertError").show();
+			}
+		} 
+		else if (status == "error")
+		{
+			$("#alertError").text("Error while deleting.");
+			$("#alertError").show();
+		} 
+		else
+		{
+			$("#alertError").text("Unknown error while deleting..");
+			$("#alertError").show();
+		}
+	}
+
+
+	// Validation
+	function validateItemForm()
+	{
+		// NIC is required
+		if ($("#nic").val().trim() == "")
+		{
+			return "Insert NIC";
+		}
+		
+		// name is required
+		if ($("#firstName").val().trim() == "")
+		{
+			return "Insert first name";
+		}
+		
+		// last name is required
+		if ($("#lastName").val().trim() == "")
+		{
+			return "Insert last name";
+		}
+		
+		// contact number is required
+		if ($("#contactNumber").val().trim() == "")
+		{
+			return "Insert contact number";
+		}
+		
+		// category is required
+		if ($("#category").val().trim() == "")
+		{
+			return "Insert category";
+		}
+		
+		// email is required
+		if ($("#email").val().trim() == "")
+		{
+			return "Insert Item Price.";
+		}
+		
+		// password is required
+		if ($("#password").val().trim() == "")
+		{
+			return "Insert Item Description.";
+		}
+		
+		return true;
+	}	
 		
 //NIC validation
 function checkNic(){
@@ -187,50 +343,13 @@ function checkConfirmPassword(){
 	}
 }
 
-//NIC required 
-function nicRequired(){
-	if ($("#nic").vla().trim() == ""){
-		$("#nic_error").text("This field is required");
-		$("#nic_error").show();
-		return false;
-	}else{
-		$("#nic_error").hide();
-		return true;
-	}
-}
 
-function fNameRequired(){
-	if ($("#fName").vla().trim() == ""){
-		$("#fName_error").text("This field is required");
-		$("#fName_error").show();
-		return false;
-	}else{
-		$("#fName_error").hide();
-		return true;
-	}
-}
 
-function lNameRequired(){
-	if ($("#lName").vla().trim() == ""){
-		$("#lName_error").text("This field is required");
-		$("#lName_error").show();
-		return false;
-	}else{
-		$("#lName_error").hide();
-		return true;
-	}
-}
 
-function fNameRequired(){
-	if ($("#category").vla().trim() == ""){
-		$("#category_error").text("This field is required");
-		$("#category_error").show();
-		return false;
-	}else{
-		$("#category_error").hide();
-		return true;
-	}
-}
+
+
+
+
 
 
 

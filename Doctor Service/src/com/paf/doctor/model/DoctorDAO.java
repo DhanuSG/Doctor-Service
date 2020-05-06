@@ -48,12 +48,12 @@ public class DoctorDAO {
 			
 			ps.executeUpdate();
 			
-			output = "Doctor Registered Successfully";
+			String newItems = doctorList();
+			output = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
 			
 		} catch (Exception e) {
+			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
 			e.printStackTrace();
-			
-			output = "Error in registration process";
 		}
 		
 		return output;
@@ -73,7 +73,9 @@ public class DoctorDAO {
 			
 			ps.setString(1, doctor.getEmail());
 			
+			Statement statement = con.createStatement();
 			ResultSet rs = ps.executeQuery(query);
+			//ResultSet rs = ps.execute(query);
 			
 			while(rs.next()) {
 				System.out.println("ddd");
@@ -115,10 +117,12 @@ public class DoctorDAO {
 			
 			ps.executeUpdate();
 			
-			status = "Doctor Update Successfully";
+			String newItems = doctorList();
+			status = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			status = "Error in update process";
+			status = "{\"status\":\"error\", \"data\": \"Error in update process.\"}";
 		}
 		
 		return status;
@@ -138,11 +142,13 @@ public class DoctorDAO {
 			
 			ps.execute();
 			
-			status = "Doctor deleted successfuly";
+			String newItems = doctorList();
+			status = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
+			
 		} catch (Exception e) {
 			// TODO: handle exception
+			status = "{\"status\":\"error\", \"data\": \"Error in deleting process.\"}";
 			e.printStackTrace();
-			status = "Error in deleting process.";
 		}
 		
 		return status;
@@ -165,7 +171,7 @@ public class DoctorDAO {
 					"<th>Gender</th>" + "<th>Category</th>" + "<th>Hospital Name</th>" + "<th>Email</th>" + "<th>Password</th>" +
 					"<th>Update</th><th>Remove</th></tr>";
 			
-			String query = "select nic, firstName, lastName, contactNumber, gender, category, hospitalName, email, password from doctor_registration";
+			String query = "select * from doctor_registration";
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			
@@ -189,9 +195,13 @@ public class DoctorDAO {
 				output += "<td>" + hospitalName + "</td>";
 				output += "<td>" + email + "</td>";
 				output += "<td>" + password + "</td>";
-				output += "<td><button type=\"button\" class=\"btn btn-primary\" id=\"updateButton\">Update</button></td>";
-				output += "<td><button type=\"button\" class=\"btn btn-danger\" id=\"removeButton\">Remove</button></td>";
+				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-primary'></td>";
+				output += "<td>"
+						+ "<input name='btnDelete' type='button' value='Delete' class='btn btn-danger btnRemove' data-nic='" + nic + "'></td>";
+				
 				output += "</tr>";
+				
+				
 			}
 		}catch (Exception e) {
 			// TODO: handle exception

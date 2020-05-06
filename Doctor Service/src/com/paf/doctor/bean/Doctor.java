@@ -15,6 +15,10 @@ public class Doctor {
 public Doctor() {
 		
 	}
+
+public Doctor(String nic) {
+	this.nic = nic;
+}
 	
 	public Doctor(String email, String password) {
 		this.email = email;
@@ -33,10 +37,6 @@ public Doctor() {
 		this.hospitalName = hospitalName;
 		this.email = email;
 		this.password = password;
-	}
-
-	public Doctor(String nic) {
-		this.nic = nic;
 	}
 
 	public String getNic() {

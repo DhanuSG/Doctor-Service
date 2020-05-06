@@ -3,24 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%
-	if(request.getParameter("nic") != null){
-	String nic = request.getParameter("nic");
-	String firstName = request.getParameter("firstName");
-	String lastName = request.getParameter("lastName");
-	String contactNumber = request.getParameter("contactNumber");
-	String gender = request.getParameter("gender");
-	String category = request.getParameter("category");
-	String hospitalName = request.getParameter("hospitalName");
-	String email = request.getParameter("email");
-	String password = request.getParameter("password");
-	
-	Doctor d = new Doctor(nic,firstName, lastName, contactNumber, gender, category, hospitalName, email, password);
-	String status = DoctorDAO.registerDoctor(d);
-	
-	session.setAttribute("doctor_registration_status", status);
-	}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,37 +135,38 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     </div>
                 </div>
                 
-                <!-- sign in button -->
+                <!-- hidden field -->
+                <input type="hidden" id="hidField" name="hidField" value="save">
+                
+                <!-- register button -->
                 <div class="form-group row">
                     <div class="col-sm-10">
-                      <button type="submit" class="btn btn-success" id="register-button">Register</button>
+                      <button type="submit" class="btn btn-success" id="btnRegister">Register</button>
                     </div>
                 </div>
                 
             </form>
-            
-            <div class="alert alert-success">
-            	<%
-            		if(session.getAttribute("doctor_registration_status") != null) {
-            			out.print(session.getAttribute("doctor_registration_status"));
-            		}
-            	%>
-            	</div>
-            
-        </fieldset>
-    </div>
-    </div>
-
-    <div class ="row">
-    <div class="col-12" id="displayDoctors">
-    	<fieldset>
-            <h3>
-                <span> Doctor Details</span>
-            </h3>
             </fieldset>
-            <%=DoctorDAO.doctorList()%>
-    </div>   
-    </div>
-  </div>    
+            </div>
+            <hr>
+            
+
+		<div class="row">
+		
+			<!-- Table -->
+			<div class="col-12" id="#divItemsGrid">
+				<h3>Doctor Details</h3>
+				<%=DoctorDAO.doctorList() %>
+			</div>
+			
+			<!-- Status -->
+			<div class="col-sm-4">
+				<div id="alertSuccess" class="alert alert-success alertArea"></div>
+				<div id="alertError" class="alert alert-danger alertArea"></div>
+			</div>
+			
+		</div>
+	
+
 </body>
 </html>
