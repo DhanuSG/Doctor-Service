@@ -35,6 +35,10 @@ public Doctor() {
 		this.password = password;
 	}
 
+	public Doctor(String nic) {
+		this.nic = nic;
+	}
+
 	public String getNic() {
 		return nic;
 	}

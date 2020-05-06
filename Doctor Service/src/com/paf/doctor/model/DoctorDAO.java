@@ -189,7 +189,7 @@ public class DoctorDAO {
 				output += "<td>" + hospitalName + "</td>";
 				output += "<td>" + email + "</td>";
 				output += "<td>" + password + "</td>";
-				output += "<td><button type=\"button\" class=\"btn btn-primary\" id=\"updateButton\">Update</buuton></td>";
+				output += "<td><button type=\"button\" class=\"btn btn-primary\" id=\"updateButton\">Update</button></td>";
 				output += "<td><button type=\"button\" class=\"btn btn-danger\" id=\"removeButton\">Remove</button></td>";
 				output += "</tr>";
 			}
